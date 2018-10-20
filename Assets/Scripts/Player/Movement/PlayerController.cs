@@ -6,13 +6,16 @@ using UnityEngine.Animations;
 public class PlayerController : MonoBehaviour
 {
     //player speed
-    public float speed = 5f;
+    public float normSpeed = 5f;
+    //MaxSpeed
+    public float maxSpeed = 7f;
+    //Condition for running
+    public bool isRun;
     private Vector3 input;
     //Rigidboys component;
     private Rigidbody rb;
 
-    //Layermask for ground
-    public LayerMask groundLayer;
+
 
     // Use this for initialization
     void Start()
@@ -29,29 +32,22 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
-
         input = Vector3.zero;
         input.z = Input.GetAxis("Horizontal");
         input.x = Input.GetAxis("Vertical");
-
-        if(input != Vector3.zero)
+        //Normal Input 
+        if (input != Vector3.zero)
         {
-            rb.isKinematic = false;
-            rb.MovePosition(transform.position + input * speed * Time.deltaTime);
-        }
-        else if(input != Vector3.zero && Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            rb.MovePosition(transform.position + input * speed * Time.deltaTime);
+            rb.MovePosition(transform.position + input * normSpeed * Time.deltaTime);
         }
 
-        
-
+        //if no input then...
         if (!Input.anyKey)
         {
+            //Set moveposition to 0
             rb.MovePosition(transform.position + input * 0 * Time.deltaTime);
         }
 
     }
 
-   
 }
