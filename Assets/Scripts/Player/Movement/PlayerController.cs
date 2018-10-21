@@ -5,17 +5,18 @@ using UnityEngine.Animations;
 
 public class PlayerController : MonoBehaviour
 {
+    //Default speed
+    public float defSpeed;
     //player speed
-    public float normSpeed = 5f;
+    public float normSpeed = 1.5f;
     //MaxSpeed
-    public float maxSpeed = 7f;
-    //Condition for running
-    public bool isRun;
+    public float maxSpeed = 2.5f;
+
     private Vector3 input;
     //Rigidboys component;
     private Rigidbody rb;
 
-
+    public float rayRadius;
 
     // Use this for initialization
     void Start()
@@ -41,6 +42,16 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(transform.position + input * normSpeed * Time.deltaTime);
         }
 
+        //Running
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.MovePosition(transform.position + input * maxSpeed * Time.deltaTime);
+        }
+        else
+        {
+            rb.MovePosition(transform.position + input * normSpeed * Time.deltaTime);
+        }
+
         //if no input then...
         if (!Input.anyKey)
         {
@@ -49,5 +60,18 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    //void CollisionDetection()
+    //{
+    //    Ray ray = new Ray(transform.position, transform.forward);
+    //    RaycastHit hit;
+    //    if (Physics.SphereCast(ray, rayRadius, out hit))
+    //    {
+    //        if(hit.collider.tag == "Wall")
+    //        {
+    //            input = Vector3.zero;
+    //        }
+    //    }
+    //}
 
 }
