@@ -12,6 +12,7 @@ public class Random_Nav : MonoBehaviour
     void Awake()
     {
         startPosition = transform.position;
+        nav = GetComponent<NavMeshAgent>();
     }
 
     void FreeRoam()

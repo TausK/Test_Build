@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
 
     public float rayRadius;
 
+    public Animator anim;
+
+    //Sword Object
+    public GameObject sword;
+
     // Use this for initialization
     void Start()
     {
@@ -40,6 +45,10 @@ public class PlayerController : MonoBehaviour
         if (input != Vector3.zero)
         {
             rb.MovePosition(transform.position + input * normSpeed * Time.deltaTime);
+            if(anim.GetBool("isMoving")!= true)
+            {
+                anim.SetBool("isMoving",true);
+            }
         }
 
         //Running
@@ -57,10 +66,17 @@ public class PlayerController : MonoBehaviour
         {
             //Set moveposition to 0
             rb.MovePosition(transform.position + input * 0 * Time.deltaTime);
+            if (anim.GetBool("isMoving") != false)
+            {
+                anim.SetBool("isMoving", false);
+            }
         }
+
+        
 
     }
 
+   
     //void CollisionDetection()
     //{
     //    Ray ray = new Ray(transform.position, transform.forward);
