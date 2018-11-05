@@ -1,24 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class Cam : MonoBehaviour
 {
-    //Camera target
     public Transform target;
-    //smooth transisiton
-    public float smooth;
-    //distance between camera & target
-    public Vector3 offset;
+    public Vector3 camPos = Vector3.zero;
+    //public float distance = 3.0f;
+    //public float height = 3.0f;
+    public float damping = 5.0f;
+
+    public bool followBehind = true;
 
 
-    // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
-        //Set position of camera offset on target
-        Vector3 camPosition = target.position + offset;
-        //Lerp camera to target
-        Vector3 camSmooth = Vector3.Lerp(transform.position, camPosition, smooth);
-        transform.position = camSmooth;
+        Vector3 wantedPosition;
+        if (followBehind)
+            wantedPosition = target.TransformPoint(camPos);
+        else
+            wantedPosition = target.position + camPos;
+
+        transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
+
     }
 }

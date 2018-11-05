@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         PlayerMovement();
     }
@@ -39,33 +39,39 @@ public class PlayerController : MonoBehaviour
     void PlayerMovement()
     {
         input = Vector3.zero;
-        input.z = Input.GetAxis("Horizontal");
-        input.x = Input.GetAxis("Vertical");
+        input.x = Input.GetAxis("Horizontal");
+        input.z = Input.GetAxis("Vertical");
+        
+        Vector3 euler = transform.eulerAngles;
+        euler.y = Mathf.Atan2(input.z, input.x) * Mathf.Rad2Deg;
+        transform.eulerAngles = euler;
+
         //Normal Input 
         if (input != Vector3.zero)
         {
-            rb.MovePosition(transform.position + input * normSpeed * Time.deltaTime);
+            rb.velocity = input * normSpeed;
+
             if(anim.GetBool("isMoving")!= true)
             {
-                anim.SetBool("isMoving",true);
+                anim.SetBool("isMoving", true);
             }
         }
 
         //Running
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            rb.MovePosition(transform.position + input * maxSpeed * Time.deltaTime);
+            rb.velocity = input * maxSpeed;
         }
         else
         {
-            rb.MovePosition(transform.position + input * normSpeed * Time.deltaTime);
+            rb.velocity = input * normSpeed;
         }
 
         //if no input then...
         if (!Input.anyKey)
         {
             //Set moveposition to 0
-            rb.MovePosition(transform.position + input * 0 * Time.deltaTime);
+            //rb.MovePosition(rb.position + input * 0 * Time.deltaTime);
             if (anim.GetBool("isMoving") != false)
             {
                 anim.SetBool("isMoving", false);
@@ -75,19 +81,6 @@ public class PlayerController : MonoBehaviour
         
 
     }
-
-   
-    //void CollisionDetection()
-    //{
-    //    Ray ray = new Ray(transform.position, transform.forward);
-    //    RaycastHit hit;
-    //    if (Physics.SphereCast(ray, rayRadius, out hit))
-    //    {
-    //        if(hit.collider.tag == "Wall")
-    //        {
-    //            input = Vector3.zero;
-    //        }
-    //    }
-    //}
+    
 
 }
