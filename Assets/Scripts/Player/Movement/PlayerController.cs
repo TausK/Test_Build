@@ -18,10 +18,12 @@ public class PlayerController : MonoBehaviour
 
     public float rayRadius;
 
-    public Animator anim;
+    //public Animator anim;
 
     //Sword Object
-    public GameObject sword;
+    //public GameObject sword;
+
+    public PlayerAttack attackZone;
 
     // Use this for initialization
     void Start()
@@ -30,6 +32,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        MeleeAttack();
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -41,20 +47,20 @@ public class PlayerController : MonoBehaviour
         input = Vector3.zero;
         input.x = Input.GetAxis("Horizontal");
         input.z = Input.GetAxis("Vertical");
-        
-        Vector3 euler = transform.eulerAngles;
-        euler.y = Mathf.Atan2(input.z, input.x) * Mathf.Rad2Deg;
-        transform.eulerAngles = euler;
+
+        //Vector3 euler = transform.eulerAngles;
+        //euler.y = Mathf.Atan2(input.z, input.x) * Mathf.Rad2Deg;
+        //transform.eulerAngles = euler;
 
         //Normal Input 
         if (input != Vector3.zero)
         {
             rb.velocity = input * normSpeed;
-
-            if(anim.GetBool("isMoving")!= true)
-            {
-                anim.SetBool("isMoving", true);
-            }
+            rb.MoveRotation(Quaternion.LookRotation(input));
+            //if(anim.GetBool("isMoving")!= true)
+            //{
+            //    anim.SetBool("isMoving", true);
+            //}
         }
 
         //Running
@@ -70,17 +76,22 @@ public class PlayerController : MonoBehaviour
         //if no input then...
         if (!Input.anyKey)
         {
-            //Set moveposition to 0
-            //rb.MovePosition(rb.position + input * 0 * Time.deltaTime);
-            if (anim.GetBool("isMoving") != false)
-            {
-                anim.SetBool("isMoving", false);
-            }
+            //if (anim.GetBool("isMoving") != false)
+            //{
+            //    anim.SetBool("isMoving", false);
+            //}
         }
-
         
-
     }
-    
+
+    void MeleeAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            attackZone.attack = !attackZone.attack;
+            Debug.Log(attackZone.attack);
+        }
+    }
+
 
 }
