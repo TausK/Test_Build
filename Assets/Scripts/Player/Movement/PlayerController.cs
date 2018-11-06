@@ -5,25 +5,24 @@ using UnityEngine.Animations;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Player Movement
     //Default speed
     public float defSpeed;
     //player speed
     public float normSpeed = 1.5f;
     //MaxSpeed
     public float maxSpeed = 2.5f;
-
-    private Vector3 input;
+    //Default input vector to 0
+    private Vector3 input = Vector3.zero;
     //Rigidboys component;
     private Rigidbody rb;
-
-    public float rayRadius;
-
+    #endregion
     //public Animator anim;
 
     //Sword Object
-    //public GameObject sword;
+    public GameObject melee;
 
-    public PlayerAttack attackZone;
+
 
     // Use this for initialization
     void Start()
@@ -44,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
-        input = Vector3.zero;
         input.x = Input.GetAxis("Horizontal");
         input.z = Input.GetAxis("Vertical");
 
@@ -81,15 +79,14 @@ public class PlayerController : MonoBehaviour
             //    anim.SetBool("isMoving", false);
             //}
         }
-        
+
     }
 
     void MeleeAttack()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            attackZone.attack = !attackZone.attack;
-            Debug.Log(attackZone.attack);
+            melee.SetActive(true);
         }
     }
 

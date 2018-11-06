@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    Collider col;
-    public bool attack;
-    // Use this for initialization
-    void Start()
+    //time delay
+    public float delay = 0.5f;
+    public bool isAttack;
+    private void Start()
     {
-        col = GetComponent<Collider>();
-        col.enabled = false;
+        //Set gameobject active false at start
+        gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (attack)
-        {
-            col.enabled = true;
-        }
-
-
+        //Start attack sequance
+        StartCoroutine(MeleeAttack());
     }
 
+    IEnumerator MeleeAttack()
+    {
+        //Set a numerator delay
+        yield return new WaitForSeconds(delay);
+        //gameobject active false after delay
+        gameObject.SetActive(false);
+    }
 }
