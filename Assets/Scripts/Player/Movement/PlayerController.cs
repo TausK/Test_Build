@@ -5,6 +5,8 @@ using UnityEngine.Animations;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Player Movement")]
+    [SerializeField]
     #region Player Movement
     //Default speed
     public float defSpeed;
@@ -17,7 +19,8 @@ public class PlayerController : MonoBehaviour
     //Rigidboys component;
     private Rigidbody rb;
     #endregion
-    //public Animator anim;
+
+    public Animator anim;
 
     //Sword Object
     public GameObject melee;
@@ -87,7 +90,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             melee.SetActive(true);
+            anim.SetBool("isAttacking", true);
         }
+        else
+        {
+            anim.SetBool("isAttacking", false);
+        }
+       
     }
 
 

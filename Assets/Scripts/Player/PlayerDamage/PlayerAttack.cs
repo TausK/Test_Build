@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     //time delay
     public float delay = 0.5f;
     public bool isAttack;
+
     private void Start()
     {
         //Set gameobject active false at start
@@ -25,5 +26,6 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(delay);
         //gameobject active false after delay
         gameObject.SetActive(false);
+        
     }
 }
