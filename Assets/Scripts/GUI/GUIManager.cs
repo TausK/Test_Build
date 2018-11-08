@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
-    #region Menu 
+    #region Variables
+    [Header("Menu Gameobjects")]
+    #region Menu Gameobjects
     //Beginning of menu
     public GameObject startMenu;
     //GUI Pop up in main menu
@@ -24,18 +26,9 @@ public class GUIManager : MonoBehaviour
     //Character Creating Menu
     public GameObject createChar;
     #endregion
-
-    #region
-    public bool isMain;
-    public bool iscCurMenu;
-    
-    //public int index;
-
-    //public GameObject[] menus;
-
     #endregion
 
-
+    #region Main Menu Functionality
     private void Start()
     {
         startMenu.SetActive(true);
@@ -50,22 +43,13 @@ public class GUIManager : MonoBehaviour
             return;
         }
 
-        if(!mainMenu.activeSelf)
-        {
-            isMain = false;
-           
-        }
-
-        if (mainMenu.activeSelf)
-        {
-            isMain = true;
-        }
     }
+
 
     public void PlayBtn()
     {
         mainMenu.SetActive(false);
-         login.SetActive(true);
+        login.SetActive(true);
     }
 
     public void OptionBtn()
@@ -73,21 +57,41 @@ public class GUIManager : MonoBehaviour
         mainMenu.SetActive(false);
         options.SetActive(true);
     }
+    #endregion
 
-
-
-    public void Back()
+    #region Login Menu Functionality
+    public void LoginGame()
     {
         login.SetActive(false);
+        charSelect.SetActive(true);
+    }
+
+    public void CreateUserBtn()
+    {
+        login.SetActive(false);
+        createUser.SetActive(true);
+    }
+
+    public void ForgotPassBtn()
+    {
+
+    }
+    #endregion
+
+    #region Back Functions
+    public void OptionBack()
+    {
         options.SetActive(false);
-        createUser.SetActive(false);
-        createChar.SetActive(false);
-
-
-        //if the button is pressed then....
-        //Toggle back to previous panel
         mainMenu.SetActive(true);
     }
+
+    public void CreateUserBack()
+    {
+        createUser.SetActive(false);
+        login.SetActive(true);
+    }
+
+    #endregion
 
     public void ExitBtn()
     {
@@ -97,5 +101,10 @@ public class GUIManager : MonoBehaviour
 #endif
         //Close Application
         Application.Quit();
+    }
+
+    public void StartOffline(int loadLevel)
+    {
+        SceneManager.LoadScene(loadLevel);
     }
 }

@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         //Normal Input 
         if (input != Vector3.zero)
         {
-            rb.velocity = input * normSpeed;
+            rb.velocity = input.normalized * normSpeed;
             rb.MoveRotation(Quaternion.LookRotation(input));
             //if(anim.GetBool("isMoving")!= true)
             //{
