@@ -21,6 +21,8 @@ public class GUIManager : MonoBehaviour
     public GameObject login;
     //Create user menu
     public GameObject createUser;
+    //Forgot Pass
+    public GameObject forgotPass;
     //Character Selection Menu
     public GameObject charSelect;
     //Character Creating Menu
@@ -74,7 +76,8 @@ public class GUIManager : MonoBehaviour
 
     public void ForgotPassBtn()
     {
-
+        login.SetActive(false);
+        forgotPass.SetActive(true);
     }
     #endregion
 
@@ -90,6 +93,13 @@ public class GUIManager : MonoBehaviour
         createUser.SetActive(false);
         login.SetActive(true);
     }
+
+    public void ForgotPassBack()
+    {
+        login.SetActive(true);
+        forgotPass.SetActive(false);
+    }
+
 
     #endregion
 
