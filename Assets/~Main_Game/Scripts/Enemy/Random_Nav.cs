@@ -15,17 +15,20 @@ public class Random_Nav : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        FreeRoam();
+    }
+
     void FreeRoam()
     {
+        Vector3 randomDir = transform.position + Random.insideUnitSphere * roamRadius;
+        randomDir += startPosition;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomDir, out hit, roamRadius, 1))
         {
-            Vector3 randomDir = Random.insideUnitSphere * roamRadius;
-            randomDir += startPosition;
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomDir, out hit, roamRadius, 1);
             Vector3 finalPosition = hit.position;
             nav.destination = finalPosition;
         }
     }
-
-
 }

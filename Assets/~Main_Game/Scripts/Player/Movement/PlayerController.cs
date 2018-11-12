@@ -58,12 +58,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = input.normalized * normSpeed;
             rb.MoveRotation(Quaternion.LookRotation(input));
-            //if(anim.GetBool("isMoving")!= true)
-            //{
-            //    anim.SetBool("isMoving", true);
-            //}
-        }
 
+        }
         //Running
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -72,17 +68,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.velocity = input * normSpeed;
-        }
-
-        //if no input then...
-        if (!Input.anyKey)
-        {
-            //if (anim.GetBool("isMoving") != false)
-            //{
-            //    anim.SetBool("isMoving", false);
-            //}
-        }
-
+        } 
     }
 
     void MeleeAttack()
