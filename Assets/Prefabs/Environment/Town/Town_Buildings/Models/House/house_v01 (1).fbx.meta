@@ -1,31 +1,21 @@
 fileFormatVersion: 2
-guid: 2634de2591f84814fbae50a877841680
+guid: 546bac12cb127f548b1791f52a08fa40
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: chimney
-    100002: house
-    100004: //RootNode
-    100006: sign
-    100008: windows
-    400000: chimney
-    400002: house
-    400004: //RootNode
-    400006: sign
-    400008: windows
+    100000: House
+    100002: //RootNode
+    100004: Sign
+    400000: House
+    400002: //RootNode
+    400004: Sign
     2100000: lambert1
-    2300000: chimney
-    2300002: house
-    2300004: sign
-    2300006: windows
-    3300000: chimney
-    3300002: house
-    3300004: sign
-    3300006: windows
-    4300000: chimney
-    4300002: sign
-    4300004: windows
-    4300006: house
+    2300000: House
+    2300002: Sign
+    3300000: House
+    3300002: Sign
+    4300000: Sign
+    4300002: House
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -57,7 +47,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.15
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
