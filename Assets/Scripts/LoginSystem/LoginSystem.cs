@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 using UnityEngine.UI;
 
 
-public class CreateUser : MonoBehaviour
+public class LoginSystem : MonoBehaviour
 {
     #region Variables
 
