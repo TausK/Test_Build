@@ -100,7 +100,11 @@ public class GUIManager : MonoBehaviour
         forgotPass.SetActive(false);
     }
 
-
+    public void LogOut()
+    {
+        login.SetActive(true);
+        charSelect.SetActive(false);
+    }
     #endregion
 
     public void ExitBtn()
