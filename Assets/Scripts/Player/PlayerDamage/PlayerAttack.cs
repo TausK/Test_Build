@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     //time delay
+    public float dmg = 50f;
     public float delay = 0.5f;
     public bool isAttack;
 
@@ -25,7 +26,8 @@ public class PlayerAttack : MonoBehaviour
         //Set a numerator delay
         yield return new WaitForSeconds(delay);
         //gameobject active false after delay
-        gameObject.SetActive(false);
-        
+        gameObject.SetActive(false);       
     }
+
+   
 }

@@ -45,6 +45,7 @@ public class LoginSystem : MonoBehaviour
 
     #endregion
 
+    GUIManager manager;
     #endregion
 
     private void ClearString()
@@ -116,9 +117,12 @@ public class LoginSystem : MonoBehaviour
     {
         username = userLoginUser.text;
         password = passLoginUser.text;
-        if(username != "" || password != "")
+        if (username != "" || password != "")
         {
-            SceneManager.LoadScene(1);
+
+            manager.login.SetActive(false);
+            manager.charSelect.SetActive(true);
+
             print("Login Success");
         }
         else

@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
 
     //Sword Object
     public GameObject melee;
-
-
+    
 
     // Use this for initialization
     void Start()
@@ -48,10 +47,6 @@ public class PlayerController : MonoBehaviour
     {
         input.x = Input.GetAxis("Horizontal");
         input.z = Input.GetAxis("Vertical");
-
-        //Vector3 euler = transform.eulerAngles;
-        //euler.y = Mathf.Atan2(input.z, input.x) * Mathf.Rad2Deg;
-        //transform.eulerAngles = euler;
 
         //Normal Input 
         if (input != Vector3.zero)
