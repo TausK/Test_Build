@@ -10,10 +10,18 @@ public class Random_Nav : MonoBehaviour
     public Transform waypointParent;
     public Transform[] waypoints;
     public float waypointDis;
-    private float playerDis;
+    private float enemyDis;
     private int index;
     public float delay = 2f;
     #endregion
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.forward);
+        //Gizmos.DrawRay(transform.position, direction);
+        Gizmos.DrawRay(transform.position, direction* enemyDis);
+    }
 
     private void Start()
     {
@@ -32,26 +40,22 @@ public class Random_Nav : MonoBehaviour
 
     void Patrol()
     {
-        //Enemy transform will equal to the waypoint array
+        //target transform will equal to the waypoint array
         Transform point = waypoints[index];
         //player distance is equal to the vector distance from original position to new position
-        playerDis = Vector3.Distance(transform.position, point.position);
+        enemyDis = Vector3.Distance(transform.position, point.position);
         //if player distance is close to waypoint then..
-        if (playerDis <= waypointDis)
+        if (enemyDis <= waypointDis)
         {
-            StartCoroutine(DelayMovement());  
+            index = Random.Range(1, waypoints.Length);   
         }
-       
-
         //Generate path to waypoints
         agent.SetDestination(point.position);
     }
 
     IEnumerator DelayMovement()
-    {
-        yield return new WaitForSeconds(delay);
-        //Set new random waypoint
-        index = Random.Range(1, waypoints.Length);
+    {   
+        yield return new WaitForSeconds(delay);   
     }
 
     #region Some other AI
