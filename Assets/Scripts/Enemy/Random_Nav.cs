@@ -8,6 +8,7 @@ public class Random_Nav : MonoBehaviour
     #region Variables
     #region Random AI Seek
     public NavMeshAgent agent;
+    private Transform point;
     public Transform waypointParent;
     public Transform[] waypoints;
     public float waypointDis;
@@ -25,7 +26,8 @@ public class Random_Nav : MonoBehaviour
     #region Enemy Target Seek
     public Transform target;
     public float detectRadius;
-    public bool targetDetected;
+    public float attackDist;
+    public float playerDist;
     #endregion
 
     #endregion
@@ -35,7 +37,7 @@ public class Random_Nav : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 direction = transform.TransformDirection(Vector3.forward);
         //Gizmos.DrawRay(transform.position, direction);
-        Gizmos.DrawRay(transform.position, direction* enemyDis);
+        Gizmos.DrawRay(transform.position, direction * enemyDis);
     }
 
     private void Start()
@@ -47,7 +49,7 @@ public class Random_Nav : MonoBehaviour
         //set index to 1
         index = 1;
 
-        targetDetected = false;
+
     }
 
     private void Update()
@@ -59,7 +61,7 @@ public class Random_Nav : MonoBehaviour
     void Patrol()
     {
         //target transform will equal to the waypoint array
-        Transform point = waypoints[index];
+        point = waypoints[index];
         //player distance is equal to the vector distance from original position to new position
         enemyDis = Vector3.Distance(transform.position, point.position);
         //if player distance is close to waypoint then..
@@ -89,40 +91,29 @@ public class Random_Nav : MonoBehaviour
                 //Ai destination is new point set
                 agent.SetDestination(point.position);
             }
-        }        
+        }
     }
 
     void PlayerDetect()
     {
-        
+        //Ray ray = new Ray(transform.position, Vector3.forward);
+        //RaycastHit hit;
+        //if (Physics.Raycast(ray, out hit, detectRadius))
+        //{
+        //    if (hit.collider.tag == "Player")
+        //    {
+        //        agent.SetDestination(this.transform.position);
+        //        if(playerDist <= attackDist)
+        //        {
+        //            Debug.Log("Player Hit");
+        //            //Attack
+        //        }
+        //    }
+        //    else if(playerDist > attackDist)
+        //    {
+        //        agent.SetDestination(point.position);
+        //    }
+
     }
 
-    #region Some other AI
-    //private NavMeshAgent nav;
-    //private Vector3 startPosition;
-    //public float roamRadius;
-
-    //void Awake()
-    //{
-    //    startPosition = transform.position;
-    //    nav = GetComponent<NavMeshAgent>();
-    //}
-
-    //private void Start()
-    //{
-    //    FreeRoam();
-    //}
-
-    //void FreeRoam()
-    //{
-    //    Vector3 randomDir = transform.position + Random.insideUnitSphere * roamRadius;
-    //    randomDir += startPosition;
-    //    NavMeshHit hit;
-    //    if (NavMesh.SamplePosition(randomDir, out hit, roamRadius, 1))
-    //    {
-    //        Vector3 finalPosition = hit.position;
-    //        nav.destination = finalPosition;
-    //    }
-    //}
-    #endregion
 }
