@@ -45,7 +45,7 @@ public class LoginSystem : MonoBehaviour
 
     #endregion
 
-    GUIManager manager;
+   public GUIManager manager;
     #endregion
 
     private void ClearString()
@@ -53,10 +53,6 @@ public class LoginSystem : MonoBehaviour
         username = "";
         password = "";
         email = "";
-    }
-    public void LoginGame()
-    {
-
     }
 
     #region Login System Setup
@@ -93,6 +89,21 @@ public class LoginSystem : MonoBehaviour
         yield return www;
     }
 
+    IEnumerator CheckEmail(string email)
+    {
+        string CheckEmailURL = "http://localhost/sqlsystem/login.php";
+        WWWForm user = new WWWForm();
+
+        //Grab data
+        user.AddField("email_Post", email);
+
+        WWW www = new WWW(CheckEmailURL, user);
+
+        yield return www;
+    }
+
+
+
     public void Create_User()
     {
         username = userInput.text;
@@ -100,10 +111,11 @@ public class LoginSystem : MonoBehaviour
         email = emailInput.text;
         if (username != "" || password != "" || email != "")
         {
-            StartCoroutine(CreateLogin(username, password, email));
             ClearString();
+            StartCoroutine(CreateLogin(username, password, email));
+            manager.createUser.SetActive(false);
+            manager.login.SetActive(true);
             print("User Successfully Created");
-
         }
         else
         {

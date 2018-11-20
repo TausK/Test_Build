@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Random_Nav : MonoBehaviour
 {
     #region Variables
+    #region Random AI Seek
     public NavMeshAgent agent;
     public Transform waypointParent;
     public Transform[] waypoints;
@@ -13,6 +14,20 @@ public class Random_Nav : MonoBehaviour
     private float enemyDis;
     private int index;
     public float delay = 2f;
+    #endregion
+
+    #region AI Movement Timer
+    public bool stopMove;
+    public float counter = 0;
+    public float patrolTimer = 2;
+    #endregion
+
+    #region Enemy Target Seek
+    public Transform target;
+    public float detectRadius;
+    public bool targetDetected;
+    #endregion
+
     #endregion
 
     private void OnDrawGizmos()
@@ -31,10 +46,13 @@ public class Random_Nav : MonoBehaviour
         waypoints = waypointParent.GetComponentsInChildren<Transform>();
         //set index to 1
         index = 1;
+
+        targetDetected = false;
     }
 
     private void Update()
     {
+        //Update patrol per frame
         Patrol();
     }
 
@@ -45,17 +63,38 @@ public class Random_Nav : MonoBehaviour
         //player distance is equal to the vector distance from original position to new position
         enemyDis = Vector3.Distance(transform.position, point.position);
         //if player distance is close to waypoint then..
+        agent.SetDestination(point.position);
+        //if enemys distance is less then current waypoint position then..
         if (enemyDis <= waypointDis)
         {
-            index = Random.Range(1, waypoints.Length);   
+            //stop player movement false
+            stopMove = true;
+            //ai destination is the current transform of currrent waypoint
+            agent.SetDestination(this.transform.position);
         }
-        //Generate path to waypoints
-        agent.SetDestination(point.position);
+        //if stopMove is true then...
+        if (stopMove)
+        {
+            //Start counter
+            counter += Time.deltaTime;
+            //if counter is bigger or equal to patrolTimer(Delay) then....
+            if (counter >= patrolTimer)
+            {
+                //Set random waypoint point in array
+                index = Random.Range(1, waypoints.Length);
+                //stop move is false
+                stopMove = false;
+                //counter reset
+                counter = 0;
+                //Ai destination is new point set
+                agent.SetDestination(point.position);
+            }
+        }        
     }
 
-    IEnumerator DelayMovement()
-    {   
-        yield return new WaitForSeconds(delay);   
+    void PlayerDetect()
+    {
+        
     }
 
     #region Some other AI
