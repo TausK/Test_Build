@@ -8,7 +8,7 @@ public class Random_Nav : MonoBehaviour
     #region Variables
     #region Random AI Seek
     public NavMeshAgent agent;
-    private Transform point;
+
     public Transform waypointParent;
     public Transform[] waypoints;
     public float waypointDis;
@@ -24,10 +24,8 @@ public class Random_Nav : MonoBehaviour
     #endregion
 
     #region Enemy Target Seek
-    public Transform target;
-    public float detectRadius;
-    public float attackDist;
-    public float playerDist;
+    public float detectRadius = 1f;
+    public string playerTag = "Player";
     #endregion
 
     #endregion
@@ -35,9 +33,10 @@ public class Random_Nav : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector3 direction = transform.TransformDirection(Vector3.forward);
-        //Gizmos.DrawRay(transform.position, direction);
-        Gizmos.DrawRay(transform.position, direction * enemyDis);
+        //    Vector3 direction = transform.TransformDirection(Vector3.forward);
+        //    //Gizmos.DrawRay(transform.position, direction);
+        //    Gizmos.DrawRay(transform.position, direction * enemyDis);
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
 
     private void Start()
@@ -56,12 +55,13 @@ public class Random_Nav : MonoBehaviour
     {
         //Update patrol per frame
         Patrol();
+        PlayerDetect();
     }
 
     void Patrol()
     {
         //target transform will equal to the waypoint array
-        point = waypoints[index];
+        Transform point = waypoints[index];
         //player distance is equal to the vector distance from original position to new position
         enemyDis = Vector3.Distance(transform.position, point.position);
         //if player distance is close to waypoint then..
@@ -96,24 +96,40 @@ public class Random_Nav : MonoBehaviour
 
     void PlayerDetect()
     {
-        //Ray ray = new Ray(transform.position, Vector3.forward);
-        //RaycastHit hit;
-        //if (Physics.Raycast(ray, out hit, detectRadius))
-        //{
-        //    if (hit.collider.tag == "Player")
-        //    {
-        //        agent.SetDestination(this.transform.position);
-        //        if(playerDist <= attackDist)
-        //        {
-        //            Debug.Log("Player Hit");
-        //            //Attack
-        //        }
-        //    }
-        //    else if(playerDist > attackDist)
-        //    {
-        //        agent.SetDestination(point.position);
-        //    }
-
+        //Reference player gameobject with tag
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+        //enemy dis to player dis
+        float target = Vector3.Distance(transform.position, player.transform.position);
+        if(target < detectRadius)
+        {
+            agent.SetDestination(player.transform.position);
+        }
     }
+
+    //void UpdateTarget()
+    //{
+    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+    //    float shortestDistance = Mathf.Infinity;
+    //    GameObject nearestEnemy = null;
+
+    //    foreach (GameObject enemy in enemies)
+    //    {
+    //        float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+    //        if (distanceToEnemy < shortestDistance)
+    //        {
+    //            shortestDistance = distanceToEnemy;
+    //            nearestEnemy = enemy;
+    //        }
+    //    }
+    //    if (nearestEnemy != null && shortestDistance <= range)
+    //    {
+    //        target = nearestEnemy.transform;
+    //    }
+    //    else
+    //    {
+    //        target = null;
+    //    }
+    //}
+
 
 }
