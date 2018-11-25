@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isAttacking", false);
         }
-       
     }
 
 

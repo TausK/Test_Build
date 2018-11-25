@@ -10,6 +10,14 @@ public class Enemy : EnemyController
 
     public PlayerAttack playerAttack;
 
+    public GameObject enemyAttackZone;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, Vector3.forward);
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,7 +31,7 @@ public class Enemy : EnemyController
 
     void Death()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -31,9 +39,14 @@ public class Enemy : EnemyController
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "AttackZone")
+        if (other.gameObject.name == "AttackZone")
         {
             health -= playerAttack.dmg;
+        }
+
+        if (other.gameObject.name == "Player")
+        {
+
         }
     }
 }
