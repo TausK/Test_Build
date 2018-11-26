@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Movement")]
-    [SerializeField]
+
     #region Player Movement
     //Default speed
     public float defSpeed;
@@ -24,18 +25,28 @@ public class PlayerController : MonoBehaviour
 
     //Sword Object
     public GameObject melee;
-    
+    public EnemyAttack enemyAttack;
+
+    public Slider hpSlide;
+    public float health = 100;
+    public float curHealth;
+
+    public bool gameOver;
 
     // Use this for initialization
     void Start()
     {
         //Reference rigid component on object
         rb = GetComponent<Rigidbody>();
+        curHealth = health;
+        hpSlide.value = curHealth;
     }
 
     private void Update()
     {
         MeleeAttack();
+        Death();
+
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -63,7 +74,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.velocity = input * normSpeed;
-        } 
+        }
     }
 
     void MeleeAttack()
@@ -79,5 +90,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "EnemyAttackZone")
+        {
+            curHealth -= enemyAttack.dmg;
+        }
+    }
 
+
+    void Death()
+    {
+        if(curHealth <= 0)
+        {
+            gameOver = true;
+            Time.timeScale = 0;
+        }
+    }
 }

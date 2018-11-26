@@ -8,14 +8,13 @@ public class Enemy : EnemyController
 {
     private Rigidbody rb;
 
-    public PlayerAttack playerAttack;
+    private PlayerAttack playerAttack;
 
     public GameObject enemyAttackZone;
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, Vector3.forward);
+        
     }
 
     private void Start()
@@ -39,14 +38,9 @@ public class Enemy : EnemyController
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "AttackZone")
+        if (other.gameObject.name == "PlayerAttackZone")
         {
             health -= playerAttack.dmg;
-        }
-
-        if (other.gameObject.name == "Player")
-        {
-
         }
     }
 }

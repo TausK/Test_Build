@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: bf66b7c4bce0a2747a341b26daec544d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ground
+    100004: normal_tree1
+    100006: normal_trees
+    100008: normalTree_trunk1
+    100010: normalTree_trunks
+    100012: pine_tree5
+    100014: pine_trees
+    100016: pineTree_trunk
+    100018: rock
+    100020: rocks
+    100022: tree_trunks
+    400000: //RootNode
+    400002: ground
+    400004: normal_tree1
+    400006: normal_trees
+    400008: normalTree_trunk1
+    400010: normalTree_trunks
+    400012: pine_tree5
+    400014: pine_trees
+    400016: pineTree_trunk
+    400018: rock
+    400020: rocks
+    400022: tree_trunks
+    2100000: lambert1
+    2300000: ground
+    2300002: normal_tree1
+    2300004: normal_trees
+    2300006: normalTree_trunk1
+    2300008: normalTree_trunks
+    2300010: pine_tree5
+    2300012: pine_trees
+    2300014: pineTree_trunk
+    2300016: rock
+    2300018: rocks
+    2300020: tree_trunks
+    3300000: ground
+    3300002: normal_tree1
+    3300004: normal_trees
+    3300006: normalTree_trunk1
+    3300008: normalTree_trunks
+    3300010: pine_tree5
+    3300012: pine_trees
+    3300014: pineTree_trunk
+    3300016: rock
+    3300018: rocks
+    3300020: tree_trunks
+    4300000: ground
+    4300002: normal_tree1
+    4300004: normalTree_trunk1
+    4300006: rock
+    4300008: pine_tree5
+    4300010: pineTree_trunk
+    4300012: normal_trees
+    4300014: normalTree_trunks
+    4300016: pine_trees
+    4300018: tree_trunks
+    4300020: rocks
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

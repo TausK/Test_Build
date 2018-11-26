@@ -7,11 +7,7 @@ public class EnemyController : MonoBehaviour
 
     #region Enemy Variables
 
-    public float speed;
-
     public float health;
-
-    public float dmg;
 
     public float attackDis = 1f;
 

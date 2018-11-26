@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
     //time delay
     public float dmg = 50f;
     public float delay = 0.5f;
-    public bool isAttack;
 
     private void Start()
     {

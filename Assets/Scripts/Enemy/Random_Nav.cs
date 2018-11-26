@@ -25,7 +25,10 @@ public class Random_Nav : MonoBehaviour
 
     #region Enemy Target Seek
     public float detectRadius = 1f;
+    public float attackRange = 0.5f;
     public string playerTag = "Player";
+    public GameObject attackZone;
+
     #endregion
 
     #endregion
@@ -33,10 +36,9 @@ public class Random_Nav : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        //    Vector3 direction = transform.TransformDirection(Vector3.forward);
-        //    //Gizmos.DrawRay(transform.position, direction);
-        //    Gizmos.DrawRay(transform.position, direction * enemyDis);
         Gizmos.DrawWireSphere(transform.position, detectRadius);
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * attackRange;
+        Gizmos.DrawRay(transform.position, direction);
     }
 
     private void Start()
@@ -103,6 +105,18 @@ public class Random_Nav : MonoBehaviour
         if(target < detectRadius)
         {
             agent.SetDestination(player.transform.position);
+
+            if(target <= attackRange)
+            {
+                attackZone.SetActive(true);
+                agent.speed = 0;
+            }
+            else
+            {
+                agent.speed = 0.3f;
+            }
+            
+            
         }
     }
 
