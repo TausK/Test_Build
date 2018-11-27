@@ -194,12 +194,12 @@ public class LoginSystem : MonoBehaviour
 
     public void SendEmail(Text email/*, string debugUser*/)
     {   /*
-         generate random code...numbers/letters ...6
+        
          
          sent to user
 
            create PHP that uses the email address to find and echo username
-           grab user naw with www.text and put into the Hello User space
+           grab user name with www.text and put into the Hello User space
 
            create a popup upon successful email sent to allow code input
            check to see if code matches
@@ -213,7 +213,7 @@ public class LoginSystem : MonoBehaviour
             {
                 //Generate Code
                 RandomCode();
-
+                
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress("sqlunityclasssydney@gmail.com");
                 mail.To.Add(email.text);

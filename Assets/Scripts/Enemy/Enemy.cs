@@ -8,7 +8,7 @@ public class Enemy : EnemyController
 {
     private Rigidbody rb;
 
-    private PlayerAttack playerAttack;
+    public PlayerAttack playerAttack;
 
     public GameObject enemyAttackZone;
 
@@ -20,6 +20,7 @@ public class Enemy : EnemyController
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
         health = 100f;
     }
 

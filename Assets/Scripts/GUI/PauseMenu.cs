@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (controller.gameOver)
+        if (controller.gameOver == true)
         {
             gameOverMenu.SetActive(true);   
         }
