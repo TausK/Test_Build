@@ -21,6 +21,7 @@ public class LoginSystem : MonoBehaviour
     //String for login system
     public string username, email, password;
 
+    private string characters = "0123456789abcdefghijklmnopqrstuvwxABCDEFGHIJKLMNOPQRSTUVWXYZ";
     #endregion
 
     #region Bools
@@ -43,16 +44,39 @@ public class LoginSystem : MonoBehaviour
     public InputField passLoginUser;
     #endregion
 
+    #region
+    public InputField emailSend;
     #endregion
 
-   public GUIManager manager;
     #endregion
 
+    public GUIManager manager;
+    #endregion
+
+    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    public string finalString;
+    char[] stringChars = new char[8];
+    void RandomCode()
+    {
+        for (int i = 0; i<6; i++)
+        {
+            stringChars[i] = chars[Random.Range(0,chars.Length)];
+        }
+
+        finalString = new string(stringChars);
+    }
+    private void Start()
+    {
+        
+    }
     private void ClearString()
     {
-        username = "";
-        password = "";
-        email = "";
+        userInput.text = "";
+        passInput.text = "";
+        emailInput.text = "";
+        passLoginUser.text = "";
+        userLoginUser.text = "";
+        emailSend.text = "";
     }
 
     #region Login System Setup
@@ -102,8 +126,25 @@ public class LoginSystem : MonoBehaviour
         yield return www;
     }
 
-
-
+    IEnumerator RecoveryEmail(string email)
+    {
+       
+        string recoveryEmailURL = "http://localhost/sqlsystem/checkemail.php";
+        WWWForm checkEmail = new WWWForm();
+        checkEmail.AddField("email_post", email);
+        WWW www = new WWW(recoveryEmailURL, checkEmail);
+        yield return www;
+        Debug.Log(www.text);
+        if (www.text != "No Email Found")
+        {
+            username = www.text;
+            mes = "Email Sending...";
+        }
+        else
+        {
+            mes = www.text;
+        }
+    }
     public void Create_User()
     {
         username = userInput.text;
@@ -111,30 +152,38 @@ public class LoginSystem : MonoBehaviour
         email = emailInput.text;
         if (username != "" || password != "" || email != "")
         {
-            ClearString();
-            StartCoroutine(CreateLogin(username, password, email));
-            manager.createUser.SetActive(false);
-            manager.login.SetActive(true);
-            print("User Successfully Created");
+            if (emailInput.text.Contains("@" + ".com"))
+            {
+                StartCoroutine(CreateLogin(username, password, email));
+                manager.createUser.SetActive(false);
+                manager.login.SetActive(true);
+                print("User Successfully Created");
+                ClearString();
+            }
+            else
+            {
+                print("Incorrect email");
+            }
+
         }
         else
         {
             ClearString();
             print("Please Fill Out");
+            Debug.Log("Need @");
 
         }
     }
 
-    public void Login_Game()
+    public void Login_Game(int loadLvl)
     {
         username = userLoginUser.text;
         password = passLoginUser.text;
         if (username != "" || password != "")
         {
 
-            manager.login.SetActive(false);
-            manager.charSelect.SetActive(true);
-
+            SceneManager.LoadScene(loadLvl);
+            ClearString();
             print("Login Success");
         }
         else
@@ -142,5 +191,51 @@ public class LoginSystem : MonoBehaviour
             print("Login Unsuccessful");
         }
     }
+
+    public void SendEmail(Text email/*, string debugUser*/)
+    {   /*
+         generate random code...numbers/letters ...6
+         
+         sent to user
+
+           create PHP that uses the email address to find and echo username
+           grab user naw with www.text and put into the Hello User space
+
+           create a popup upon successful email sent to allow code input
+           check to see if code matches
+           if success popup new password box
+           upon submittion of password update data base... UPDATE password WHERE user or email == user or email
+           load to login
+            */
+        if (email.text != "")
+        {
+            if (email.text.Contains("@") || email.text.Contains( ".com"))
+            {
+                //Generate Code
+                RandomCode();
+
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("sqlunityclasssydney@gmail.com");
+                mail.To.Add(email.text);
+                mail.Subject = "Password Reset";
+                mail.Body = "Hello " +/* debugUser +*/ "\nReset using this code: "+finalString;
+
+                SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+                smtpServer.Port = 25;
+                smtpServer.Credentials = new System.Net.NetworkCredential("sqlunityclasssydney@gmail.com", "sqlpassword") as ICredentialsByHost;
+                smtpServer.EnableSsl = true;
+                ServicePointManager.ServerCertificateValidationCallback = delegate
+                    (object s, X509Certificate cert, X509Chain chain, SslPolicyErrors policyErrors)
+                { return true; };
+                smtpServer.Send(mail);
+                Debug.Log("Sending Email");
+                ClearString();
+            }
+
+        }
+
+    }
+
+
     #endregion
 }

@@ -59,13 +59,7 @@ public class GUIManager : MonoBehaviour
     }
     #endregion
 
-    #region Login Menu Functionality
-    //public void LoginGame()
-    //{
-    //    login.SetActive(false);
-    //    charSelect.SetActive(true);
-    //}
-
+   
     public void CreateUserBtn()
     {
         login.SetActive(false);
@@ -77,14 +71,7 @@ public class GUIManager : MonoBehaviour
         login.SetActive(false);
         forgotPass.SetActive(true);
     }
-    #endregion
-
-    #region CharacCreate & CharacSelect Functionality
-    public void CreatCharacBtn(int loadLvl)
-    {
-        SceneManager.LoadScene(loadLvl);
-    }
-    #endregion
+    
 
     #region Back Functions
     public void OptionBack()
