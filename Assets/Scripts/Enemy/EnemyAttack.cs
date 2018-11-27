@@ -5,27 +5,42 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public float dmg = 20f;
-    public float delay = 0.5f;
-    
+    public float delay = 0.5f, timer;
+    public bool hasAttacked;
     // Use this for initialization
     void Start()
     {
         //Deactivate attackzone at start
-        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(MeleeAttack());
+        if (hasAttacked)
+        {
+            timer += Time.deltaTime;
+        }
+        if(timer > delay)
+        {
+            hasAttacked = false;
+            timer = 0;
+        }
     }
-
-    IEnumerator MeleeAttack()
+    private void OnTriggerStay(Collider other)
     {
-        //Set delay
-        yield return new WaitForSeconds(delay);
-        //deactivate gameobject
-        gameObject.SetActive(false);
+        if(!hasAttacked)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if(other.GetComponent<PlayerController>().gameOver == false)
+                {
+                    other.GetComponent<PlayerController>().curHealth -= dmg;
+                    hasAttacked = true;
+                }               
+
+            }
+        }
+        
     }
 
 

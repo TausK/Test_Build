@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 265c28f81f7c31648b80d3be2cd648d8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ground
+    100002: House1
+    100004: House10
+    100006: House11
+    100008: House12
+    100010: House13
+    100012: House2
+    100014: House3
+    100016: House4
+    100018: House5
+    100020: House6
+    100022: House7
+    100024: House8
+    100026: House9
+    100028: mailbox
+    100030: mailbox1
+    100032: mailbox10
+    100034: mailbox11
+    100036: mailbox12
+    100038: mailbox2
+    100040: mailbox3
+    100042: mailbox4
+    100044: mailbox5
+    100046: mailbox6
+    100048: mailbox7
+    100050: mailbox8
+    100052: mailbox9
+    100054: //RootNode
+    400000: ground
+    400002: House1
+    400004: House10
+    400006: House11
+    400008: House12
+    400010: House13
+    400012: House2
+    400014: House3
+    400016: House4
+    400018: House5
+    400020: House6
+    400022: House7
+    400024: House8
+    400026: House9
+    400028: mailbox
+    400030: mailbox1
+    400032: mailbox10
+    400034: mailbox11
+    400036: mailbox12
+    400038: mailbox2
+    400040: mailbox3
+    400042: mailbox4
+    400044: mailbox5
+    400046: mailbox6
+    400048: mailbox7
+    400050: mailbox8
+    400052: mailbox9
+    400054: //RootNode
+    2100000: lambert1
+    2100002: lambert2
+    2300000: ground
+    2300002: House1
+    2300004: House10
+    2300006: House11
+    2300008: House12
+    2300010: House13
+    2300012: House2
+    2300014: House3
+    2300016: House4
+    2300018: House5
+    2300020: House6
+    2300022: House7
+    2300024: House8
+    2300026: House9
+    2300028: mailbox
+    2300030: mailbox1
+    2300032: mailbox10
+    2300034: mailbox11
+    2300036: mailbox12
+    2300038: mailbox2
+    2300040: mailbox3
+    2300042: mailbox4
+    2300044: mailbox5
+    2300046: mailbox6
+    2300048: mailbox7
+    2300050: mailbox8
+    2300052: mailbox9
+    3300000: ground
+    3300002: House1
+    3300004: House10
+    3300006: House11
+    3300008: House12
+    3300010: House13
+    3300012: House2
+    3300014: House3
+    3300016: House4
+    3300018: House5
+    3300020: House6
+    3300022: House7
+    3300024: House8
+    3300026: House9
+    3300028: mailbox
+    3300030: mailbox1
+    3300032: mailbox10
+    3300034: mailbox11
+    3300036: mailbox12
+    3300038: mailbox2
+    3300040: mailbox3
+    3300042: mailbox4
+    3300044: mailbox5
+    3300046: mailbox6
+    3300048: mailbox7
+    3300050: mailbox8
+    3300052: mailbox9
+    4300000: ground
+    4300002: House1
+    4300004: House2
+    4300006: House3
+    4300008: House4
+    4300010: House5
+    4300012: House6
+    4300014: House7
+    4300016: House8
+    4300018: House9
+    4300020: House10
+    4300022: House11
+    4300024: House12
+    4300026: House13
+    4300028: mailbox
+    4300030: mailbox1
+    4300032: mailbox2
+    4300034: mailbox3
+    4300036: mailbox4
+    4300038: mailbox5
+    4300040: mailbox6
+    4300042: mailbox7
+    4300044: mailbox8
+    4300046: mailbox9
+    4300048: mailbox10
+    4300050: mailbox11
+    4300052: mailbox12
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

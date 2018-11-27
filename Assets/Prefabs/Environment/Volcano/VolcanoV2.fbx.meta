@@ -1,56 +1,46 @@
 fileFormatVersion: 2
-guid: 2492697a7a8679f4f9c8e3b51c048a99
+guid: 92da4d014defd114dac439f0d836f7bd
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: crater
-    100002: crater1
-    100004: crater2
-    100006: crater4
-    100008: smoke
-    100010: smoke1
-    100012: smoke2
-    100014: terrain
-    100016: volcano
-    100018: //RootNode
+    100002: craters
+    100004: dead_tree
+    100006: dead_trees
+    100008: lava_ground
+    100010: rock1
+    100012: volcano
+    100014: //RootNode
     400000: crater
-    400002: crater1
-    400004: crater2
-    400006: crater4
-    400008: smoke
-    400010: smoke1
-    400012: smoke2
-    400014: terrain
-    400016: volcano
-    400018: //RootNode
-    2100000: lambert1
+    400002: craters
+    400004: dead_tree
+    400006: dead_trees
+    400008: lava_ground
+    400010: rock1
+    400012: volcano
+    400014: //RootNode
+    2100000: lambert2
     2300000: crater
-    2300002: crater1
-    2300004: crater2
-    2300006: crater4
-    2300008: smoke
-    2300010: smoke1
-    2300012: smoke2
-    2300014: terrain
-    2300016: volcano
+    2300002: craters
+    2300004: dead_tree
+    2300006: dead_trees
+    2300008: lava_ground
+    2300010: rock1
+    2300012: volcano
     3300000: crater
-    3300002: crater1
-    3300004: crater2
-    3300006: crater4
-    3300008: smoke
-    3300010: smoke1
-    3300012: smoke2
-    3300014: terrain
-    3300016: volcano
+    3300002: craters
+    3300004: dead_tree
+    3300006: dead_trees
+    3300008: lava_ground
+    3300010: rock1
+    3300012: volcano
     4300000: volcano
-    4300002: terrain
-    4300004: crater
-    4300006: crater1
-    4300008: crater2
-    4300010: crater4
-    4300012: smoke
-    4300014: smoke1
-    4300016: smoke2
+    4300002: crater
+    4300004: craters
+    4300006: lava_ground
+    4300008: dead_tree
+    4300010: dead_trees
+    4300012: rock1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -82,7 +72,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
