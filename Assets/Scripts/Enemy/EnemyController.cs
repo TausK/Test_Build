@@ -9,9 +9,7 @@ public class EnemyController : MonoBehaviour
 
     public float health;
 
-    public float attackDis = 1f;
 
-    public float playerPos;
     #endregion
 
     

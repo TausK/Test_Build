@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7a660f4b8c7a8ba4aaf00b20d107482c
+guid: 485d2afebd672c044bef70ef0b20ba30
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Boss_Model
+    4300000: boss_sploot
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -7,6 +7,8 @@ public class EnemyAttack : MonoBehaviour
     public float dmg = 20f;
     public float delay = 0.5f, timer;
     public bool hasAttacked;
+
+    
     // Use this for initialization
     void Start()
     {

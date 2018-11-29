@@ -10,17 +10,15 @@ public class Enemy : EnemyController
 
     public PlayerAttack playerAttack;
 
-    public GameObject enemyAttackZone;
-
     private void OnDrawGizmos()
     {
-        
+
     }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+
         health = 100f;
     }
 

@@ -21,11 +21,13 @@ public class Random_Nav : MonoBehaviour
     public bool stopMove;
     public float counter = 0;
     public float patrolTimer = 2;
+    public float normSpeed;
     #endregion
 
     #region Enemy Target Seek
     public float detectRadius = 1f;
     public float attackRange = 0.5f;
+    public Transform attackPos;
     public string playerTag = "Player";
     public GameObject attackZone;
 
@@ -38,7 +40,7 @@ public class Random_Nav : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectRadius);
         Vector3 direction = transform.TransformDirection(Vector3.forward) * attackRange;
-        Gizmos.DrawRay(transform.position, direction);
+        Gizmos.DrawRay(attackPos.position, direction);
     }
 
     private void Start()
@@ -102,22 +104,43 @@ public class Random_Nav : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
         //enemy dis to player dis
         float target = Vector3.Distance(transform.position, player.transform.position);
-        if(target < detectRadius)
+        if (target < detectRadius)
         {
             agent.SetDestination(player.transform.position);
 
-            if(target <= attackRange)
-            {
-                attackZone.SetActive(true);
-                agent.speed = 0;
-            }
-            else
-            {
-                agent.speed = 0.3f;
-            }
-            
-            
+            #region
+            //if (target <= attackRange)
+            //{
+            //    attackZone.SetActive(true);
+            //    agent.speed = 0;
+            //    Debug.Log("Target in attack range");
+            //}
+            //else
+            //{
+            //    agent.speed = normSpeed;
+            //}
+            #endregion
+
         }
+        Vector3 direction = transform.TransformDirection(Vector3.forward);
+        Ray ray = new Ray(attackPos.position, direction);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, attackRange))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log(hit + "Player in attck radius");
+                attackZone.SetActive(true);
+                agent.isStopped = true;
+               
+            }
+        }
+        else
+        {
+            attackZone.SetActive(false);
+            agent.isStopped = false;
+        }
+        Debug.Log(agent.isStopped);
     }
 
 }
