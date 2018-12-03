@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     #region Enemy Variables
 
     public float health;
+    public float curHealth;
 
 
     #endregion

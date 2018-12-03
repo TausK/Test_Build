@@ -10,13 +10,26 @@ public class Enemy : EnemyController
 
     public PlayerAttack playerAttack;
 
+    public Random_Nav enemy;
+
     private void Start()
     {
+        enemy = GetComponent<Random_Nav>();
         rb = GetComponent<Rigidbody>();
 
-        health = 100f;
+        curHealth = health;
+        enemy.bossHp.maxValue = health;
+        enemy.bossHp.value = curHealth;
     }
 
+    private void LateUpdate()
+    {
+        if(enemy.bossHp.value != curHealth)
+        {
+            enemy.bossHp.value = curHealth;
+        }
+    }
+    
     private void Update()
     {
         Death();
@@ -24,17 +37,10 @@ public class Enemy : EnemyController
 
     void Death()
     {
-        if (health <= 0)
+        if (curHealth <= 0)
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "PlayerAttackZone")
-        {
-            health -= playerAttack.dmg;
+            enemy.bossSlider.SetActive(false);
         }
     }
 }

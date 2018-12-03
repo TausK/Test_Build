@@ -5,16 +5,10 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     //time delay
-    public float dmg = 50f;
+    public float dmg = 15f;
     public float delay = 0.5f;
-
-    private void Start()
-    {
-        //Set gameobject active false at start
-        gameObject.SetActive(false);
-    }
-
-    private void Update()
+    
+    private void OnEnable()
     {
         //Start attack sequance
         StartCoroutine(MeleeAttack());
@@ -28,5 +22,14 @@ public class PlayerAttack : MonoBehaviour
         gameObject.SetActive(false);       
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyController enemy = other.GetComponent<EnemyController>();
+        if (enemy)
+        {
+            enemy.curHealth -= dmg;
+        }
+    }
+
+
 }

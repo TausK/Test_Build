@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+//Saving to computer via input + output
+using System.IO;
 
+[System.Serializable]
+public class OptionData
+{
+    public int resIndex;
+}
 
 public class OptiondManager : MonoBehaviour
 {
@@ -19,6 +26,19 @@ public class OptiondManager : MonoBehaviour
     //public Light light;
     //public Slider volSlide, brightSlide;
     #endregion
+
+    #region Game Save Data
+    //Reference to Game Data class
+    public OptionData data = new OptionData();
+    //Set file string name
+    public string fileName = "GameData";
+    #endregion
+
+
+    private void Awake()
+    {
+        LoadData();
+    }
     // Use this for initialization
     void Start()
     {
@@ -26,13 +46,42 @@ public class OptiondManager : MonoBehaviour
         //audio = GameObject.Find("Music").GetComponent<AudioSource>();
         //light = GameObject.Find("Directional Light").GetComponent<Light>();
     }
+    public void SaveData()
+    {
+        data.resIndex = resIndex; 
+
+        //Set file save pathway
+        string filePath = Application.dataPath + "/Data/" + fileName + ".json";
+        //Set .json format
+        string json = JsonUtility.ToJson(data);
+        //File name save as fileName path + json format
+        File.WriteAllText(filePath, json);
+
+        Debug.Log("Save Data :" + filePath);
+
+    }
+
+    public void LoadData()
+    {
+        //Set file save pathway
+        string filePath = Application.dataPath + "/Data/" + fileName + ".json";
+        //Set .json format
+        string json = File.ReadAllText(filePath);
+        //File From json format
+        data = JsonUtility.FromJson<OptionData>(json);
+
+        //Load data
+        data.resIndex = resIndex;
+        Debug.Log("Load Data :" + filePath);
+    }
 
     public void Resolutions()
     {
         //index equal to dropdown values
         resIndex = resDrop.value;
+        Vector2 resolution = res[resIndex];
         //Set resolution value functionality
-        Screen.SetResolution((int)res[resIndex].x, (int)res[resIndex].y,FullScreenMode.FullScreenWindow);
+        Screen.SetResolution((int)resolution.x, (int)resolution.y, FullScreenMode.FullScreenWindow);
     }
 
 

@@ -281,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &44445082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6337,6 +6337,9 @@ MonoBehaviour:
   - {x: 1280, y: 720}
   resIndex: 0
   resDrop: {fileID: 134587810}
+  data:
+    resIndex: 0
+  fileName: GameData
 --- !u!1 &1661187307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,7 +6629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1756031936
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6793,7 +6796,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1832085751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633874981}
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1832085751
