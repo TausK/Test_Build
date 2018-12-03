@@ -39,8 +39,8 @@ public class Random_Nav : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectRadius);
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * attackRange;
-        Gizmos.DrawRay(attackPos.position, direction);
+        //Vector3 direction = transform.TransformDirection(Vector3.forward) * attackRange;
+        //Gizmos.DrawRay(attackPos.position, direction);
     }
 
     private void Start()
@@ -98,6 +98,22 @@ public class Random_Nav : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        
+        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            attackZone.SetActive(true);
+            agent.isStopped = true;
+        }
+        else
+        {
+            attackZone.SetActive(false);
+            agent.isStopped = false;
+        }
+    }
+    
     void PlayerDetect()
     {
         //Reference player gameobject with tag
@@ -108,39 +124,31 @@ public class Random_Nav : MonoBehaviour
         {
             agent.SetDestination(player.transform.position);
 
-            #region
-            //if (target <= attackRange)
-            //{
-            //    attackZone.SetActive(true);
-            //    agent.speed = 0;
-            //    Debug.Log("Target in attack range");
-            //}
-            //else
-            //{
-            //    agent.speed = normSpeed;
-            //}
-            #endregion
+        }
+        //Vector3 direction = transform.TransformDirection(Vector3.forward);
+        //Ray ray = new Ray(attackPos.position, direction);
+        //RaycastHit hit;
+        //if (Physics.Raycast(ray, out hit, attackRange))
+        //{
+        //    if (hit.collider.CompareTag("Player"))
+        //    {
 
-        }
-        Vector3 direction = transform.TransformDirection(Vector3.forward);
-        Ray ray = new Ray(attackPos.position, direction);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, attackRange))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                Debug.Log(hit + "Player in attck radius");
-                attackZone.SetActive(true);
-                agent.isStopped = true;
-               
-            }
-        }
-        else
-        {
-            attackZone.SetActive(false);
-            agent.isStopped = false;
-        }
-        Debug.Log(agent.isStopped);
+        //    }
+        //}
+        //else
+
+        //if (agent.remainingDistance < attackRange)
+        //{
+        //    Debug.Log(agent.isStopped + "Player in attck radius");
+        //    attackZone.SetActive(true);
+        //    agent.isStopped = true;
+        //}
+        //else
+        //{
+        //    attackZone.SetActive(false);
+        //    agent.isStopped = false;
+        //}
+        //Debug.Log(agent.isStopped);
     }
 
 }

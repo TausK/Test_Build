@@ -10,11 +10,6 @@ public class Enemy : EnemyController
 
     public PlayerAttack playerAttack;
 
-    private void OnDrawGizmos()
-    {
-
-    }
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
