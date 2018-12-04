@@ -19,7 +19,7 @@ public class LoginSystem : MonoBehaviour
     //Popup Message
     public string mes;
     //String for login system
-    public string username, email, password;
+    public string username, email, password, passCode;
 
     private string characters = "0123456789abcdefghijklmnopqrstuvwxABCDEFGHIJKLMNOPQRSTUVWXYZ";
     #endregion
@@ -44,6 +44,10 @@ public class LoginSystem : MonoBehaviour
     public InputField passLoginUser;
     #endregion
 
+    #region Recovery Code
+    public InputField recoveryInput;
+    #endregion
+
     #region
     public InputField emailSend;
     #endregion
@@ -58,16 +62,16 @@ public class LoginSystem : MonoBehaviour
     char[] stringChars = new char[8];
     void RandomCode()
     {
-        for (int i = 0; i<6; i++)
+        for (int i = 0; i < 6; i++)
         {
-            stringChars[i] = chars[Random.Range(0,chars.Length)];
+            stringChars[i] = chars[Random.Range(0, chars.Length)];
         }
 
         finalString = new string(stringChars);
     }
     private void Start()
     {
-        
+
     }
     private void ClearString()
     {
@@ -128,7 +132,7 @@ public class LoginSystem : MonoBehaviour
 
     IEnumerator RecoveryEmail(string email)
     {
-       
+
         string recoveryEmailURL = "http://localhost/sqlsystem/checkemail.php";
         WWWForm checkEmail = new WWWForm();
         checkEmail.AddField("email_post", email);
@@ -192,7 +196,7 @@ public class LoginSystem : MonoBehaviour
         }
     }
 
-    public void SendEmail(Text email/*, string debugUser*/)
+    public void SendEmail(Text email)
     {   /*
         
          
@@ -209,16 +213,18 @@ public class LoginSystem : MonoBehaviour
             */
         if (email.text != "")
         {
-            if (email.text.Contains("@") || email.text.Contains( ".com"))
+            if (email.text.Contains("@") || email.text.Contains(".com"))
             {
                 //Generate Code
                 RandomCode();
-                
+
+
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress("sqlunityclasssydney@gmail.com");
                 mail.To.Add(email.text);
                 mail.Subject = "Password Reset";
-                mail.Body = "Hello " +/* debugUser +*/ "\nReset using this code: "+finalString;
+                mail.Body = "Hello " + username + "\nReset using this code: " + finalString;
+
 
                 SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
                 smtpServer.Port = 25;
@@ -230,10 +236,20 @@ public class LoginSystem : MonoBehaviour
                 smtpServer.Send(mail);
                 Debug.Log("Sending Email");
                 ClearString();
+
             }
 
         }
 
+    }
+
+    public void RecoverPass()
+    {
+        passCode = recoveryInput.text;
+        if (passCode != "" && passCode == finalString)
+        {
+
+        }
     }
 
 

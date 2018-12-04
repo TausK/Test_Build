@@ -23,8 +23,8 @@ public class GUIManager : MonoBehaviour
     public GameObject createUser;
     //Forgot Pass
     public GameObject forgotPass;
-    //Character Selection Menu
-    public GameObject charSelect;
+    //Recovery Pass
+    public GameObject recovery;
     #endregion
     #endregion
 
@@ -92,11 +92,7 @@ public class GUIManager : MonoBehaviour
         forgotPass.SetActive(false);
     }
 
-    public void LogOut()
-    {
-        login.SetActive(true);
-        charSelect.SetActive(false);
-    }
+    
     #endregion
 
     public void ExitBtn()

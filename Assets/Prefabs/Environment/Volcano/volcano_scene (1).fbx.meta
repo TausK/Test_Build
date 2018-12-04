@@ -138,6 +138,30 @@ ModelImporter:
     4300042: polySurface19
     4300044: polySurface20
     4300046: polySurface21
+    6400000: ground
+    6400002: lava
+    6400004: polySurface1
+    6400006: polySurface10
+    6400008: polySurface11
+    6400010: polySurface12
+    6400012: polySurface13
+    6400014: polySurface14
+    6400016: polySurface15
+    6400018: polySurface16
+    6400020: polySurface17
+    6400022: polySurface18
+    6400024: polySurface19
+    6400026: polySurface2
+    6400028: polySurface20
+    6400030: polySurface21
+    6400032: polySurface3
+    6400034: polySurface4
+    6400036: polySurface5
+    6400038: polySurface6
+    6400040: polySurface7
+    6400042: polySurface8
+    6400044: polySurface9
+    6400046: volcano
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -171,7 +195,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

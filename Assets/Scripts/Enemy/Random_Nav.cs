@@ -142,6 +142,10 @@ public class Random_Nav : MonoBehaviour
                     bossSlider.SetActive(true);
                 }
             }
+            else
+            {
+                bossSlider.SetActive(false);
+            }
         }
 
         Vector3 direction = transform.TransformDirection(Vector3.forward);
