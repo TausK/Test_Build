@@ -24,10 +24,16 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyController enemy = other.GetComponent<EnemyController>();
+        
+        Norm.Enemy_Norm enemy = other.GetComponent<Norm.Enemy_Norm>();
+        Boss.Enemy_Boss enemyBoss = other.GetComponent<Boss.Enemy_Boss>();
         if (enemy)
         {
             enemy.curHealth -= dmg;
+        }
+        if (enemyBoss)
+        {
+            enemyBoss.curHealth -= dmg;
         }
     }
 

@@ -32,10 +32,15 @@ public class PlayerController : MonoBehaviour
     public Slider hpSlide;
     public float health = 100;
     public float curHealth;
+    public float hpRegen = 2;
 
     public bool gameOver;
     public Image fill;
 
+    public float counter = 0;
+    public float hpRegenTimer = 1.5f;
+
+    public Boss.Random_Nav_Boss enemy;
     // Use this for initialization
     void Start()
     {
@@ -45,12 +50,16 @@ public class PlayerController : MonoBehaviour
         curHealth = health;
         hpSlide.maxValue = health;
         hpSlide.value = curHealth;
+        enemy = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss.Random_Nav_Boss>();
     }
 
     private void Update()
     {
         MeleeAttack();
         Death();
+
+        HpRegen();
+
 
     }
     // Update is called once per frame
@@ -64,7 +73,28 @@ public class PlayerController : MonoBehaviour
         {
             hpSlide.value = curHealth;
         }
+     
     }
+   
+    void HpRegen()
+    {
+
+        if (curHealth < health)
+        {
+            counter += Time.deltaTime;
+            if (counter >= hpRegenTimer)
+            {
+                counter = 0;
+                curHealth += hpRegen * Time.fixedDeltaTime;
+                if (curHealth == health)
+                {
+                    curHealth = health;
+                }
+            }
+           
+        }
+    }
+
     void PlayerMovement()
     {
         input.x = Input.GetAxis("Horizontal");
@@ -118,9 +148,12 @@ public class PlayerController : MonoBehaviour
     {
         if(curHealth <= 0)
         {
+            enemy.bossSlider.SetActive(false);
+            fill.transform.gameObject.SetActive(false);
             gameOver = true;
             Time.timeScale = 0;
-            fill.transform.gameObject.SetActive(false);
+           
+            
         }
     }
 }
