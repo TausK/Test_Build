@@ -21,7 +21,7 @@ public class OptiondManager : MonoBehaviour
     public int resIndex;
     //resolution dropdown ui
     public Dropdown resDrop;
-
+    public Toggle tog;
     //public AudioSource audio;
     //public Light light;
     //public Slider volSlide, brightSlide;
@@ -34,10 +34,18 @@ public class OptiondManager : MonoBehaviour
     public string fileName = "GameData";
     #endregion
 
+   
+    public bool low; //public boolean for low quality
+    public bool med; //public boolean for medium quality
+    public bool high; //public boolean for high quality
+    public float volume; //public float for game volume
+
+
 
     private void Awake()
     {
         LoadData();
+        Screen.fullScreen = false;
     }
     // Use this for initialization
     void Start()
@@ -48,7 +56,7 @@ public class OptiondManager : MonoBehaviour
     }
     public void SaveData()
     {
-        data.resIndex = resIndex; 
+        data.resIndex = resIndex;
 
         //Set file save pathway
         string filePath = Application.dataPath + "/Data/" + fileName + ".json";
@@ -81,8 +89,22 @@ public class OptiondManager : MonoBehaviour
         resIndex = resDrop.value;
         Vector2 resolution = res[resIndex];
         //Set resolution value functionality
-        Screen.SetResolution((int)resolution.x, (int)resolution.y, FullScreenMode.FullScreenWindow);
+        Screen.SetResolution((int)resolution.x, (int)resolution.y, Screen.fullScreen);
     }
 
+    public void FullscreenToggle()
+    {
+        if (!tog.isOn)
+        {
+            Screen.fullScreen = false;
+          
+        }
+        if(tog.isOn)
+        {
+            Screen.fullScreen = true;
+           
+        }
+        
+    }
 
 }

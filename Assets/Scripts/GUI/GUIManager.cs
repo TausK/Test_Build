@@ -48,8 +48,10 @@ public class GUIManager : MonoBehaviour
 
     public void PlayBtn()
     {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
         mainMenu.SetActive(false);
-        login.SetActive(true);
+        //login.SetActive(true);
     }
 
     public void OptionBtn()
