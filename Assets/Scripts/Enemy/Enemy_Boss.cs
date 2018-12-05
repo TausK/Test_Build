@@ -15,6 +15,7 @@ namespace Boss
 
         public Random_Nav_Boss enemy;
 
+        public EndGame game;
         public OpenWall open;
         public float health;
         public float curHealth;
@@ -29,6 +30,8 @@ namespace Boss
             enemy.bossHp.value = curHealth;
 
             open = GameObject.FindGameObjectWithTag("Wall").GetComponent<OpenWall>();
+            game = GameObject.FindGameObjectWithTag("Manager").GetComponent<EndGame>();
+           
         }
 
         private void LateUpdate()
@@ -48,6 +51,7 @@ namespace Boss
         {
             if (curHealth <= 0)
             {
+                game.count++;
                 open.enemyCount++;
                 Destroy(gameObject);
                 enemy.bossSlider.SetActive(false);

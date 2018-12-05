@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     public float hpRegenTimer = 1.5f;
 
     public Boss.Random_Nav_Boss enemy;
+
+    public GameObject gameEndUI;
     // Use this for initialization
     void Start()
     {
@@ -154,6 +156,15 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0;
            
             
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "Chest")
+        {
+            gameEndUI.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

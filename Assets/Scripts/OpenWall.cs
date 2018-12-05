@@ -9,7 +9,6 @@ public class OpenWall : MonoBehaviour
    
     private void Update()
     {
-        
 
         if (enemyCount == 2)
         {

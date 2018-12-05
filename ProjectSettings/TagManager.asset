@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Enemy
   - Boss
+  - Chest
+  - Manager
   layers:
   - Default
   - TransparentFX
