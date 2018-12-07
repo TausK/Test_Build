@@ -214,7 +214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &44445082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2787,9 +2787,23 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1365575484}
+    - target: {fileID: 1289607203685672, guid: 17ddcf8c2bdabca4c896eda17f981797, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839386206686036, guid: 17ddcf8c2bdabca4c896eda17f981797, type: 2}
+      propertyPath: m_Name
+      value: CodeInputField
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ddcf8c2bdabca4c896eda17f981797, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &944566529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114299563450560346, guid: 17ddcf8c2bdabca4c896eda17f981797,
+    type: 2}
+  m_PrefabInternal: {fileID: 944566528}
+  m_Script: {fileID: 575553740, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &959262930
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,7 +3893,7 @@ MonoBehaviour:
   emailInput: {fileID: 826588851}
   userLoginUser: {fileID: 830750577}
   passLoginUser: {fileID: 2071306442}
-  recoveryInput: {fileID: 0}
+  recoveryInput: {fileID: 944566529}
   emailSend: {fileID: 771388910}
   manager: {fileID: 1633874980}
   finalString: 
