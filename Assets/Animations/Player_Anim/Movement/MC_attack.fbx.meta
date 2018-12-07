@@ -13,24 +13,30 @@ ModelImporter:
     100014: joint2
     100016: joint3
     100018: l_arm
-    100020: l_elbow
-    100022: l_foot
-    100024: l_knee
-    100026: l_leg
-    100028: l_paw
-    100030: //RootNode
-    100032: model
-    100034: r_arm
-    100036: r_arm 1
-    100038: r_elbow
-    100040: r_foot
-    100042: r_knee
-    100044: r_leg
-    100046: r_paw
-    100048: satchel
-    100050: sheath
-    100052: sword1
-    100054: transform1
+    100020: l_arm 1
+    100022: l_arm 2
+    100024: l_elbow
+    100026: l_foot
+    100028: l_knee
+    100030: l_leg
+    100032: l_leg 1
+    100034: l_leg1
+    100036: l_paw
+    100038: //RootNode
+    100040: model
+    100042: r_arm
+    100044: r_arm 1
+    100046: r_arm 2
+    100048: r_elbow
+    100050: r_foot
+    100052: r_knee
+    100054: r_leg
+    100056: r_leg 1
+    100058: r_leg1
+    100060: r_paw
+    100062: satchel
+    100064: sheath
+    100066: transform1
     400000: chest
     400002: crown
     400004: eyebrows
@@ -41,34 +47,40 @@ ModelImporter:
     400014: joint2
     400016: joint3
     400018: l_arm
-    400020: l_elbow
-    400022: l_foot
-    400024: l_knee
-    400026: l_leg
-    400028: l_paw
-    400030: //RootNode
-    400032: model
-    400034: r_arm
-    400036: r_arm 1
-    400038: r_elbow
-    400040: r_foot
-    400042: r_knee
-    400044: r_leg
-    400046: r_paw
-    400048: satchel
-    400050: sheath
-    400052: sword1
-    400054: transform1
-    2100000: lambert1
-    2300000: sword1
-    3300000: sword1
+    400020: l_arm 1
+    400022: l_arm 2
+    400024: l_elbow
+    400026: l_foot
+    400028: l_knee
+    400030: l_leg
+    400032: l_leg 1
+    400034: l_leg1
+    400036: l_paw
+    400038: //RootNode
+    400040: model
+    400042: r_arm
+    400044: r_arm 1
+    400046: r_arm 2
+    400048: r_elbow
+    400050: r_foot
+    400052: r_knee
+    400054: r_leg
+    400056: r_leg 1
+    400058: r_leg1
+    400060: r_paw
+    400062: satchel
+    400064: sheath
+    400066: transform1
+    2100000: crown1
+    2100002: sheath1
+    2100004: JackRabbit
+    2100006: satchel1
     4300000: crown
     4300002: sheath
     4300004: eyebrows
     4300006: eyes
     4300008: model
     4300010: satchel
-    4300012: sword1
     7400000: Attack
     9500000: //RootNode
     13700000: crown
@@ -108,8 +120,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack
       takeName: Take 001
-      firstFrame: 17
-      lastFrame: 31
+      firstFrame: 1
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

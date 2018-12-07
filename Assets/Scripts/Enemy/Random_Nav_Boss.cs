@@ -130,7 +130,7 @@ namespace Boss
                 }
                 else
                 {
-                    bossSlider.SetActive(false);
+                   bossSlider.SetActive(false);
                 }
             }
 
