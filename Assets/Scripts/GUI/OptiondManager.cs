@@ -23,8 +23,10 @@ public class OptiondManager : MonoBehaviour
     public Dropdown resDrop;
     public Toggle tog;
     //public AudioSource audio;
-    //public Light light;
-    //public Slider volSlide, brightSlide;
+
+    //public Slider volSlide;
+
+
     #endregion
 
     #region Game Save Data
@@ -34,13 +36,15 @@ public class OptiondManager : MonoBehaviour
     public string fileName = "GameData";
     #endregion
 
-   
-    public bool low; //public boolean for low quality
-    public bool med; //public boolean for medium quality
-    public bool high; //public boolean for high quality
+
+    public Toggle low; //public boolean for low quality
+    public Toggle med; //public boolean for medium quality
+    public Toggle high; //public boolean for high quality
     public float volume; //public float for game volume
 
-
+    public bool _low;
+    public bool _med;
+    public bool _high;
 
     private void Awake()
     {
@@ -50,6 +54,9 @@ public class OptiondManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        low.isOn = false;
+        med.isOn = true;
+        high.isOn = false;
         //find gameobject with name/tag "Music" and component 
         //audio = GameObject.Find("Music").GetComponent<AudioSource>();
         //light = GameObject.Find("Directional Light").GetComponent<Light>();
@@ -97,14 +104,61 @@ public class OptiondManager : MonoBehaviour
         if (!tog.isOn)
         {
             Screen.fullScreen = false;
-          
+
         }
-        if(tog.isOn)
+        if (tog.isOn)
         {
             Screen.fullScreen = true;
-           
-        }
-        
-    }
 
+        }
+
+    }
+    #region LowGraphics
+    public void LowGraphicalQuality()
+    {
+        if (low.isOn == true)
+        {
+            //QualitySettings.masterTextureLimit = 2;
+            QualitySettings.SetQualityLevel(1); //Set the quality level to 1
+            med.isOn = false; //Medium is set to false
+            high.isOn = false; //High is set to false
+            _high = false; //gameSettings high is set to false
+            _med = false; //gameSettings medium is set to false
+            _low = true; //gameSettings low is set to true
+        }
+    }
+    #endregion
+    #region MediumGraphics
+    public void MedGraphicalQuality()
+    {
+
+        if (med.isOn == true)
+        {
+            //QualitySettings.masterTextureLimit = 1;
+            QualitySettings.SetQualityLevel(2);  //Set the quality level to 2
+            low.isOn = false; //low is set to false
+            high.isOn = false; //High is set to false
+            _high = false; //gameSettings high is set to false
+            _med = true; //gameSettings medium is set to true
+            _low = false; //gameSettings low is set to false
+        }
+    }
+    #endregion
+    #region HighGraphics
+    public void HighGraphicalQuality()
+    {
+        if (high.isOn == true)
+        {
+            //QualitySettings.masterTextureLimit = 0;
+            QualitySettings.SetQualityLevel(3); //Set the quality level to 3
+            med.isOn = false; //Medium is set to false
+            low.isOn = false; //Low is set to false
+            _high = true; //gameSettings high is set to true
+            _med = false; //gameSettings medium is set to false
+            _low = false; //gameSettings low is set to false
+        }
+    }
+    #endregion
+
+    
 }
