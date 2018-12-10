@@ -23,10 +23,9 @@ public class OptiondManager : MonoBehaviour
     public Dropdown resDrop;
     public Toggle tog;
     //public AudioSource audio;
-
+    public AudioSource audio;
     //public Slider volSlide;
-
-
+    public float volSet = 1;
     #endregion
 
     #region Game Save Data
@@ -60,6 +59,16 @@ public class OptiondManager : MonoBehaviour
         //find gameobject with name/tag "Music" and component 
         //audio = GameObject.Find("Music").GetComponent<AudioSource>();
         //light = GameObject.Find("Directional Light").GetComponent<Light>();
+    }
+
+    private void Update()
+    {
+        audio.volume = volSet;
+    }
+
+    public void SetVolume(float vol)
+    {
+        volSet = vol;
     }
     public void SaveData()
     {

@@ -17,14 +17,6 @@ public class GUIManager : MonoBehaviour
     public GameObject mainMenu;
     //Options Menu
     public GameObject options;
-    //Login Menu
-    public GameObject login;
-    //Create user menu
-    public GameObject createUser;
-    //Forgot Pass
-    public GameObject forgotPass;
-    //Recovery Pass
-    public GameObject recovery;
     #endregion
     #endregion
 
@@ -62,18 +54,6 @@ public class GUIManager : MonoBehaviour
     #endregion
 
    
-    public void CreateUserBtn()
-    {
-        login.SetActive(false);
-        createUser.SetActive(true);
-    }
-
-    public void ForgotPassBtn()
-    {
-        login.SetActive(false);
-        forgotPass.SetActive(true);
-    }
-    
 
     #region Back Functions
     public void OptionBack()
@@ -81,20 +61,6 @@ public class GUIManager : MonoBehaviour
         options.SetActive(false);
         mainMenu.SetActive(true);
     }
-
-    public void CreateUserBack()
-    {
-        createUser.SetActive(false);
-        login.SetActive(true);
-    }
-
-    public void ForgotPassBack()
-    {
-        login.SetActive(true);
-        forgotPass.SetActive(false);
-    }
-
-    
     #endregion
 
     public void ExitBtn()
